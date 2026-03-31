@@ -1,11 +1,11 @@
-var _SYSTEM_PATHS = ["C:/Windows/System32/kernel32.dll", "/var/www/html/cine-os/", "https://cine-os.local/api/v1/auth"];
+var _SYSTEM_PATHS = ["C:/Windows/System32/kernel32.dll", "/var/www/html/mccrack/", "https://mccrack.local/api/v1/auth"];
 var _devBuildVer = "3.0.0";
 
 var APPS = {
-    'cine': {title: 'CINE // HUB', path: 'script/Apps/Cine/index.html', icon: 'https://cdn.worldvectorlogo.com/logos/netflix-logo-icon.svg', pinned: true},
-    'term': {title: 'Spotify', path: 'script/Apps/Spotify/index.html', icon: 'https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_1280.jpg', pinned: true},
-    'files': {title: 'PS5 Emu', path: 'script/Apps/Ps5/index.html', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-OeL_be7RFaoHi3PswkuAR5XcMgBNRDynsg&s', pinned: true},
-    'web': {title: 'Cine-Web', path: 'script/Apps/Web/index.html', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeD89ZcX5W1FBtal7RerasT27q-OmZqnBixQ&s', pinned: true},
+    'cine': {title: '𝕄𝕔ℂ𝕣𝕒𝕔𝕜 Movies', path: 'movies.html', icon: 'https://cdn.worldvectorlogo.com/logos/netflix-logo-icon.svg', pinned: true},
+    'term': {title: '𝕄𝕔ℂ𝕣𝕒𝕔𝕜 Music', path: 'https://freefy.app', icon: 'https://cdn.pixabay.com/photo/2016/10/22/00/15/spotify-1759471_1280.jpg', pinned: true},
+    'files': {title: '𝕄𝕔ℂ𝕣𝕒𝕔𝕜 Games', path: 'games.html', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-OeL_be7RFaoHi3PswkuAR5XcMgBNRDynsg&s', pinned: true},
+    'web': {title: '𝕄𝕔ℂ𝕣𝕒𝕔𝕜 Web', path: 'https://patrickmango49.github.io/McCrack-Browser/', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeD89ZcX5W1FBtal7RerasT27q-OmZqnBixQ&s', pinned: true},
     'settings': {title: 'CONFIG', internal: true, icon: 'https://cdn.iconscout.com/icon/free/png-256/free-apple-settings-icon-svg-download-png-493162.png', pinned: true},
     'discord': {title: 'Discord', path: 'script/Apps/Discord/index.html', icon: 'https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png', pinned: false},
     'roblox': {title: 'Roblox', path: 'script/Apps/Roblox/index.html', icon: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9KvNyFWMg_bjo_q_1IVLKFWbfCeonn2qDow&s', pinned: false},
@@ -36,7 +36,7 @@ var wallpaperRegistry = {
 };
 
 var sysConfig = JSON.parse(localStorage.getItem('cine_sys_config')) || {};
-if (sysConfig.optBg === undefined) sysConfig.optBg = false;
+if (sysConfig.optBg === undefined) sysConfig.optBg = true;
 if (sysConfig.shortBoot === undefined) sysConfig.shortBoot = false;
 if (sysConfig.wpLoop === undefined) sysConfig.wpLoop = false;
 if (sysConfig.idleLock === undefined) sysConfig.idleLock = false; 
@@ -54,7 +54,7 @@ window.updateSysSetting = function(key, value) {
 };
 
 var cloaks = {
-    none: {title: "Cine-OS", icon: ""},
+    none: {title: "𝕄𝕔ℂ𝕣𝕒𝕔𝕜", icon: ""},
     google: {title: "Google", icon: "https://www.google.com/favicon.ico"},
     drive: {title: "My Drive - Google Drive", icon: "https://ssl.gstatic.com/images/branding/product/1x/drive_2020q4_32dp.png"},
     canvas: {title: "Dashboard", icon: "https://du11hjcvx0uqb.cloudfront.net/br/dist/images/favicon-e10d657a73.ico"},
@@ -81,7 +81,7 @@ function applyCloak() {
         newLink.href = selected.icon;
         document.getElementsByTagName('head')[0].appendChild(newLink);
     } else {
-        document.title = "Cine-OS";
+        document.title = "𝕄𝕔ℂ𝕣𝕒𝕔𝕜";
     }
 }
 setInterval(applyCloak, 2000);
@@ -241,7 +241,7 @@ window.unlockSystem = function() {
             if(bgV.style.display !== 'none') bgV.play().catch(function(e) {});
         }
         if (!welcomeShown) {
-            showNotification("Welcome To Cine V2", "Checkout Settings for FAQ!");
+            showNotification("Welcome To 𝕄𝕔ℂ𝕣𝕒𝕔𝕜 V2", "Checkout Settings for FAQ!");
             welcomeShown = true;
         }
     }, 600);
@@ -322,9 +322,8 @@ function updateClock() {
     if (elTime) elTime.innerText = h12 + ':' + min + ' ' + ampm;
     if (elDate) elDate.innerText = dayNum + ' ' + mArray[n.getMonth()];
     
-    var dayImgPath = "Videos/" + dayName + ".png";
-    if (elDayImgLock) { elDayImgLock.src = dayImgPath; elDayImgLock.alt = dayName; }
-    if (elDayImgHud) { elDayImgHud.src = dayImgPath; elDayImgHud.alt = dayName; }
+    if (elDayImgLock) elDayImgLock.innerText = dayName.toLowerCase();
+    if (elDayImgHud) elDayImgHud.innerText = dayName.toLowerCase();
 }
 setInterval(updateClock, 1000);
 
@@ -367,7 +366,7 @@ function updateSidebarData() {
     try {
         var psData = JSON.parse(localStorage.getItem('ps_purchased'));
         if(psData && psData.length > 0) {
-            document.getElementById('last-game-name').innerText = "PS5 Library Ready";
+            document.getElementById('last-game-name').innerText = "𝕄𝕔ℂ𝕣𝕒𝕔𝕜 Library Ready";
         }
         var spotData = JSON.parse(localStorage.getItem('cinify_cache'));
         if(spotData) {
@@ -446,6 +445,13 @@ function toggleApp(id) {
     }
 }
 
+
+function resolveAppPath(path) {
+    if (path === 'movies.html') return 'script/Apps/Cine/index.html';
+    if (path === 'games.html') return 'script/Apps/Ps5/index.html';
+    return path;
+}
+
 function openWindow(id) {
     var menu = document.getElementById('start-menu');
     if (menu) {
@@ -467,7 +473,7 @@ function openWindow(id) {
         if (appData.internal) {
             iframeContent = '<iframe id="frame-' + id + '"></iframe>';
         } else {
-            iframeContent = '<iframe id="frame-' + id + '" src="' + appData.path + '"></iframe>';
+            iframeContent = '<iframe id="frame-' + id + '" src="' + resolveAppPath(appData.path) + '"></iframe>'; 
         }
         
         win.innerHTML = '<div class="win-header" onmousedown="DragSystem.startWinDrag(event, \'' + id + '\')"><div class="win-title">' + appData.title + '</div><div class="win-controls"><div class="win-btn btn-min" onclick="minimizeWindow(\'' + id + '\')"></div><div class="win-btn btn-close" onclick="closeWindow(\'' + id + '\')"></div></div></div><div class="win-body">' + iframeContent + '</div>';
@@ -522,7 +528,7 @@ function openWindow(id) {
                     <div class="setting-card">
                         <div class="setting-text"><b>Tab Cloaking</b><small>Disguises OS as another site</small></div>
                         <select id="cloak-select" onchange="window.parent.updateCloak(this.value)">
-                            <option value="none">None (Cine-OS)</option>
+                            <option value="none">None (𝕄𝕔ℂ𝕣𝕒𝕔𝕜)</option>
                             <option value="google">Google</option>
                             <option value="drive">Google Drive</option>
                             <option value="canvas">Canvas</option>
@@ -805,8 +811,8 @@ function setupAppContextMenu() {
 }
 
 document.addEventListener('contextmenu', function(e) {
-    var allowedBgIds = ['desktop-area', 'windows-layer', 'bg-video', 'bg-img', 'snow-fx', 'right-sidebar'];
-    if (allowedBgIds.includes(e.target.id) || e.target.tagName === 'BODY' || e.target.closest('#right-sidebar')) {
+    var allowedBgIds = ['desktop-area', 'windows-layer', 'bg-video', 'bg-img', 'snow-fx'];
+    if (allowedBgIds.includes(e.target.id) || e.target.tagName === 'BODY') {
         e.preventDefault();
         var mainCtx = document.getElementById('desktop-context-menu');
         var appCtx = document.getElementById('app-context-menu');
